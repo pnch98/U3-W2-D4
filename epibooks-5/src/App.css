@@ -28,6 +28,10 @@
   color: #61dafb;
 }
 
+.book-cover {
+  height: 100%;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,13 +39,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-.z-1000 {
-  z-index: 1000;
-}
-
-.commentPos {
-  top: 60px;
-  max-height: calc(100vh - 60px);
 }
