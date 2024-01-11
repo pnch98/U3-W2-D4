@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, queryAllByText, render, screen } from "@testing-library/react";
 import App from "../App";
 import userEvent from "@testing-library/user-event";
 
@@ -38,6 +38,52 @@ describe("Correctly mounting all 150 books", () => {
 
       booksSearched.forEach((bookDiv) => {
         expect(bookDiv).toHaveTextContent(/kingdom/i);
+      });
+    });
+  });
+
+  describe("Correctly changing border color after clicks", () => {
+    it("shows red border after click", async () => {
+      render(<App />);
+
+      const fetchedBooks = await screen.findAllByTestId("card");
+
+      const card1 = fetchedBooks[0];
+      const card2 = fetchedBooks[2];
+
+      fireEvent.click(card1);
+
+      expect(card1.classList.contains("selectedCard")).toBe(true);
+
+      fireEvent.click(card2);
+      expect(card1.classList.contains("selectedCard")).toBe(false);
+    });
+  });
+
+  describe("Correctly not showing instances of SingleComment at page load", () => {
+    it("correctly doesn't show up", () => {
+      render(<App />);
+
+      const comments = screen.queryAllByTestId("singleComment");
+
+      expect(comments).toHaveLength(0);
+    });
+  });
+
+  describe("Correctly mounting comments on click", () => {
+    it("mounts comments correctly", async () => {
+      render(<App />);
+
+      const fetchedBooks = await screen.findAllByTestId("card");
+
+      const card2 = fetchedBooks[1];
+
+      fireEvent.click(card2);
+
+      const comments = screen.queryAllByTestId("singleComment");
+
+      comments.forEach((comment) => {
+        expect(comment).toBeInTheDocument();
       });
     });
   });

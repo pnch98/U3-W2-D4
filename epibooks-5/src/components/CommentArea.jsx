@@ -15,7 +15,8 @@ const CommentArea = ({ asin }) => {
       try {
         let response = await fetch("https://striveschool-api.herokuapp.com/api/comments/" + asin, {
           headers: {
-            Authorization: "Bearer inserisci-qui-il-tuo-token",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTlmZmQzZjI5ZTM2YjAwMTg2N2VkMDEiLCJpYXQiOjE3MDQ5ODM4NzEsImV4cCI6MTcwNjE5MzQ3MX0.q706Gvvc5H8ccHO72mMXARKmw1z_0XnPOXepodyAQQk",
           },
         });
         console.log(response);

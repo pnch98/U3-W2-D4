@@ -40,3 +40,7 @@
     transform: rotate(360deg);
   }
 }
+
+.selectedCard {
+  border: 3px solid red;
+}

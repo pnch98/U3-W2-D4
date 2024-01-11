@@ -4,10 +4,9 @@ const SingleBook = ({ changeSelectedBook, selectedBook, book }) => {
   return (
     <>
       <Card
+        data-testid="card"
         onClick={() => changeSelectedBook(book.asin)}
-        style={{
-          border: selectedBook === book.asin ? "3px solid red" : "none",
-        }}
+        className={selectedBook === book.asin ? "selectedCard" : ""}
       >
         <Card.Img variant="top" src={book.img} />
         <Card.Body>
